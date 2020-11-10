@@ -1,15 +1,15 @@
 <h1>My tasks</h1>
 
 <div>
-  <ul style="list-style: none;">
+  <ul style="list-style: none;" class="my-3 pb-3 border-bottom">
     <% @tasks.each do |task| %>
       <% if task.completed %>
-        <li> ☑ <%= link_to task.title, task_path(task) %></li>
+        <li> ☑ <%= link_to task.title, task_path(task) %> . <%= link_to '☠︎', task_path(task), method: :delete, data: { confirm: 'Are you sure?'} %></li>
       <% else %>
-        <li> ☐ <%= link_to task.title, task_path(task) %></li>
+        <li> ☐ <%= link_to task.title, task_path(task) %> . <%= link_to '☠︎', task_path(task), method: :delete, data: { confirm: 'Are you sure?'} %></li>
       <% end %>
     <% end %>
   </ul>
 </div>
 
-<%= link_to '✚ Add a new task', tasks_new_path %>
+<%= link_to '✚ Add a new task', new_task_path %>
